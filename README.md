@@ -13,7 +13,7 @@ Once serial-console is disabled, /dev/ttyAMA0 is available to shove data to. To 
 
 The physical layout of the serial-enabled LCD connection to RPi is quite simple:
 
-![alt text](https://raw.githubusercontent.com/kenkl/gettemp/master/rpi_serlcd_basic_bb_sm.png "SerialLCD hookup to RPi")
+![alt text](https://raw.githubusercontent.com/kenkl/gettemp2/master/rpi_serlcd_basic_bb_sm.png "SerialLCD hookup to RPi")
 
 And the traditional action-shot (coming soon):
 
