@@ -22,6 +22,6 @@ The physical layout of the serial-enabled LCD connection to RPi is quite simple:
 
 And the traditional action-shot:
 
-![alt text](https://raw.githubusercontent.com/kenkl/gettemp2/master/ING_0431_noexif.jpg "action shot")
+![alt text](https://raw.githubusercontent.com/kenkl/gettemp2/master/IMG_0431_noexif.jpg "action shot")
 
 
