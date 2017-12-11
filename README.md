@@ -20,8 +20,17 @@ The physical layout of the serial-enabled LCD connection to RPi is quite simple:
 
 ![alt text](https://raw.githubusercontent.com/kenkl/gettemp2/master/rpi_serlcd_basic_bb_sm.png "SerialLCD hookup to RPi")
 
-And the traditional action-shot:
+(11-Dec-2017)
 
-![alt text](https://raw.githubusercontent.com/kenkl/gettemp2/master/ING_0431_noexif.jpg "action shot")
+Performing a somewhat-major refactoring/redesign of the code. It has (for years) been written to be an always-running process. That works fine until one of the urllib calls fails and crashes the script. I didn't have any error-checking in-place to prevent that. A stop-gap was to run a watchdog in parallel to relaunch the script if/when it disappeared. Cumbersome. Now, much like [gettemp](https://github.com/kenkl/gettemp), it is a one-shot process - when run, it polls the sensors, updates the display, and exits. So, it wants to be run in a cronjob:
 
+```
+*/5 * * * * /home/kenkl/gettemp2/gettemp2.py
+```
+
+Also, LightLevel is not nearly as interesting as it once was, so I've replaced that with a simple time indicator. Practically, it shows the time that the last poll happened, *not* the current time.
+
+Removed unused functions - getipaddr, run_cmd, and exit_gracefully. Those are no longer relevant. 
+
+Removed the 'C' suffix on the temperatures - another not-interesting detail. 
 
