@@ -72,8 +72,8 @@ class SerLCD:
     }
 
     #Port has changed on newer variants of RPi/raspbian
-    #def __init__(self, port='/dev/ttyAMA0', baudrate=9600):
-    def __init__(self, port='/dev/serial0', baudrate=9600):
+    def __init__(self, port='/dev/ttyAMA0', baudrate=9600):
+    #def __init__(self, port='/dev/serial0', baudrate=9600):
         self.ser = Serial(port, baudrate)
         #Current versions of pyserial open serial on declaration. don't need ser.open any more
         #self.ser.open()
