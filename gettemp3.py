@@ -2,7 +2,6 @@
 
 import urllib
 import json
-#import SerLCD
 from time import sleep, strftime
 from datetime import datetime
 
@@ -12,21 +11,14 @@ from PIL import ImageDraw, ImageFont
 
 url = "http://ardu1.kenkl.org/"
 url2 = "http://esp1.kenkl.org/temp"
-bll = 'FULL'
-#slcd = SerLCD.SerLCD()
 oled = ssd1306(port=1, address=0x3C)
-font = ImageFont.truetype('C&C Red Alert [INET].ttf', 12)
+font = ImageFont.truetype('/home/pi/gettemp2/C&C Red Alert [INET].ttf', 12)
 
 def gettimestr():
     timenow = datetime.now().strftime('%H:%M')
     return timenow
 
 if __name__ == '__main__':
-    #slcd.Backlight(bll)
-    #slcd.Clear() // do we need to clear the screen every time any more?
-    #slcd.lcdPosition(0,15)
-    #slcd.Text('.')
-        
     webresponse = urllib.urlopen(url)
     webdata = webresponse.read()
     webresponse2 = urllib.urlopen(url2)
@@ -46,21 +38,10 @@ if __name__ == '__main__':
 
     #build the output
     zero = 'Last update: ' + gettimestr()
-    one = 'E:  ' + str(esptemp) +' '
-    two = 'D:  ' + str(ddc) 
-    three = 'O:  ' + str(dout) + ' '
-    four = 'LL: ' + str(llvl) + ' '
-
-    '''
-    slcd.lcdPosition(0,10)
-    slcd.Text(zero)
-    slcd.lcdPosition(0,0)
-    slcd.Text(one)
-    slcd.lcdPosition(1,0)
-    slcd.Text(two)
-    slcd.lcdPosition(0,15)
-    slcd.Text(' ')
-    '''
+    one = 'ESP1:  ' + str(esptemp) +' '
+    two = 'Datacentre:  ' + str(ddc) 
+    three = 'Outside:  ' + str(dout) + ' '
+    four = 'Light Level:  ' + str(llvl) + ' '
 
     with canvas(oled) as draw:
         draw.text((0, 0), zero, font=font, fill=255)
@@ -68,8 +49,6 @@ if __name__ == '__main__':
         draw.text((0, 26), two, font=font, fill=255)
         draw.text((0, 38), three, font=font, fill=255)
         draw.text((0, 50), four, font=font, fill=255)
-        #draw.text((0, 50), network('eth0'), font=font2, fill=255)
-        #draw.text((0, 50), getipaddr(), font=font2, fill=255)
  
 
 
