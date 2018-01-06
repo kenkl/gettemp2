@@ -34,3 +34,10 @@ Removed unused functions - getipaddr, run_cmd, and exit_gracefully. Those are no
 
 Removed the 'C' suffix on the temperatures - another not-interesting detail. 
 
+06-Jan-2018
+
+gettemp3.py uses a SSD1306 OLED display using [rm-hull's luma.oled](https://github.com/rm-hull/luma.oled) Python library. I owe this README some notes on implementation, but for now, a snapshot will have to do:
+
+![alt text](https://i.imgur.com/re93yhG.jpg "ssd1306 action-shot")
+
+
